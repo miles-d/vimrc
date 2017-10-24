@@ -1,0 +1,100 @@
+#!/usr/bin/env python3
+
+import os, sys
+from os.path import expanduser
+
+options = sys.argv[1:]
+plugin_dir = expanduser("~/.vim/bundle")
+
+def update_plugins():
+    os.chdir(plugin_dir)
+
+    for dir in os.listdir('.'):
+        os.chdir(dir)
+        if os.path.isdir('.git'):
+            os.system('git pull origin master')
+        os.chdir('..')
+
+
+def get_repo_basename(link):
+    return link.split('/')[-1]
+
+
+basic_repos = [
+    'https://github.com/tpope/vim-unimpaired',
+    'https://github.com/tpope/vim-abolish',
+    'https://github.com/tpope/vim-dispatch',
+    'https://github.com/tpope/vim-eunuch',
+    'https://github.com/tpope/vim-fugitive',
+    'https://github.com/tpope/vim-pathogen.git',
+    'https://github.com/tpope/vim-rsi',
+    'https://github.com/tpope/vim-vinegar',
+    'git://github.com/tpope/vim-repeat.git',
+    'git://github.com/tpope/vim-commentary.git',
+    'git://github.com/tpope/vim-surround.git',
+]
+
+extra_repos = [
+    'https://github.com/mattn/emmet-vim.git',
+    'https://github.com/tpope/vim-flagship',
+    'https://github.com/sheerun/vim-polyglot',
+    'https://github.com/tpope/vim-projectionist',
+    'https://github.com/tpope/vim-scriptease',
+    'https://github.com/tpope/vim-sleuth',
+    'https://github.com/milkypostman/vim-togglelist',
+    'https://github.com/guns/xterm-color-table.vim',
+    'https://github.com/vimwiki/vimwiki',
+]
+
+clojure_repos = [
+    'https://github.com/tpope/vim-fireplace',
+    'https://github.com/guns/vim-slamhound'
+    'git://github.com/guns/vim-sexp.git',
+    'git://github.com/tpope/vim-sexp-mappings-for-regular-people.git',
+    'https://github.com/tpope/vim-salve',
+]
+
+other_repos = [
+    'https://github.com/kovisoft/slimv',
+]
+
+
+def install_plugins(repos):
+    os.chdir(plugin_dir)
+    for repo_link in repos:
+        if os.path.isfile(get_repo_basename(repo_link)):
+            continue
+        os.system('git clone ' + repo_link)
+
+
+if '--update' in options:
+    update_plugins()
+    options.remove('--update')
+
+if '--basic' in options:
+    install_plugins(basic_repos)
+    options.remove('--basic')
+
+if '--extra' in options:
+    install_plugins(extra_repos)
+    options.remove('--extra')
+
+if '--clojure' in options:
+    install_plugins(clojure_repos)
+    options.remove('--clojure')
+
+if '--all' in options:
+    install_plugins(basic_repos + extra_repos + clojure_repos + other_repos)
+    options.remove('--all')
+
+
+if len(sys.argv) == 1 or len(options) != 0:
+    help = """
+    Available options:
+        --update
+        --basic
+        --extra
+        --clojure
+        --all
+        """
+    print(help)
