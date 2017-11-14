@@ -58,8 +58,8 @@ hi Operator ctermfg=NONE ctermbg=NONE cterm=NONE
 
 hi Comment ctermfg=252 ctermbg=NONE cterm=NONE
 
-hi StatusLine ctermbg=darkgrey ctermfg=white
-hi StatusLineNC ctermbg=239 ctermfg=249 cterm=NONE
+hi StatusLine  ctermfg=white ctermbg=244 cterm=NONE
+hi StatusLineNC ctermfg=NONE ctermbg=241 cterm=NONE
 hi VertSplit ctermbg=245 ctermfg=NONE cterm=NONE
 hi LineNr ctermfg=246
 hi Visual ctermfg=NONE ctermbg=236 cterm=NONE
