@@ -134,6 +134,8 @@ hi link DjangoStatement DjangoTagblock
 hi PythonStatement cterm=BOLD
 
 hi javaScriptBraces ctermfg=NONE cterm=NONE
+hi javaAnnotation ctermfg=NONE ctermbg=NONE cterm=BOLD
+hi javaStatement ctermfg=229 ctermbg=NONE cterm=BOLD
 hi sqlKeyword ctermfg=NONE ctermbg=NONE cterm=BOLD
 hi sqlStatement ctermfg=NONE ctermbg=NONE cterm=BOLD
 hi clojureKeyword ctermfg=NONE ctermbg=NONE cterm=BOLD
