@@ -10,7 +10,6 @@ hi Cursor  ctermfg=black ctermbg=NONE cterm=NONE
 hi LineNr  ctermfg=darkgray ctermbg=NONE cterm=NONE
 
 hi VertSplit ctermfg=darkgray ctermbg=darkgray cterm=NONE
-hi StatusLine  ctermfg=white ctermbg=darkgray cterm=NONE
 
 hi Folded ctermfg=243 ctermbg=NONE cterm=NONE
 hi Title  ctermfg=NONE ctermbg=NONE cterm=NONE
