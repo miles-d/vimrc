@@ -61,7 +61,6 @@ set sessionoptions-=options
 set formatoptions+=j " Delete comment character when joining commented lines
 setglobal tags-=./tags tags-=./tags; tags^=./tags;
 " don't clear screen on suspend
-set t_ti= t_te=
 let g:netrw_altfile = 1
 
 set omnifunc=syntaxcomplete#Complete
@@ -94,6 +93,10 @@ set viminfo^=%
 set t_Co=256
 set term=screen-256color
 set background=dark
+
+" do not clear screen on suspend (C-z)
+" for some reason should not be earlier in vimrc...
+set t_ti= t_te=
 
 set t_ZH=[3m
 set t_ZR=[23m
