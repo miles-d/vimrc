@@ -345,6 +345,22 @@ augroup PHP
     autocmd FileType php nmap <buffer> <localleader>ra diwcs)]
 augroup END
 
+
+function! SetterAssignmentJava()
+    let l:var_name = input('Variable name: ')
+    put ='this.' . var_name . ' = ' . var_name . ';'
+    normal! ==kdd
+endfunction
+
+augroup JAVA
+    autocmd!
+    autocmd FileType java nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+    autocmd FileType java inoremap h<c-i> System.out.println();<LEFT><LEFT>
+    autocmd FileType java nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+    autocmd FileType java setlocal omnifunc=javacomplete#Complete
+    autocmd FileType java inoremap <buffer> <c-r>g <esc>:call SetterAssignmentJava()<cr>
+augroup END
+
 augroup JAVASCRIPT
     autocmd!
     autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
