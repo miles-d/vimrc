@@ -120,6 +120,7 @@ hi vimWikiHeader2 ctermfg=238 ctermbg=NONE cterm=BOLD
 hi vimWikiHeader1 ctermfg=238 ctermbg=NONE cterm=BOLD
 hi vimWikiList ctermfg=NONE ctermbg=NONE cterm=NONE
 hi VimwikiLink cterm=bold,underline ctermfg=69 ctermbg=NONE
+hi VimwikiListTodo cterm=BOLD ctermfg=NONE ctermbg=NONE
 hi VimwikiPre cterm=NONE ctermfg=93 ctermbg=NONE
 hi link VimwikiCode VimwikiPre
 
@@ -155,3 +156,6 @@ hi link DjangoVarBlock DjangoTagblock
 hi link PythonFunction Function
 hi sqlKeyword ctermfg=NONE ctermbg=NONE cterm=BOLD
 hi sqlStatement ctermfg=NONE ctermbg=NONE cterm=BOLD
+
+hi javaAnnotation ctermfg=NONE ctermbg=NONE cterm=BOLD
+hi javaStatement ctermfg=NONE ctermbg=NONE cterm=BOLD
