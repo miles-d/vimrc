@@ -283,11 +283,11 @@ augroup END
 augroup PYTHON
     autocmd!
     autocmd FileType python nnoremap <buffer> <localleader>; A:<Esc>
+    autocmd FileType python setlocal shiftwidth=2 tabstop=2
     " search for function definitions
     autocmd FileType python nmap <buffer> <space>f :vimgrep 'def ' %<CR>:cw<CR>
     autocmd FileType python imap <buffer> gj self
     autocmd FileType python setlocal keywordprg=pydoc3
-    autocmd FileType python nnoremap <buffer> <leader>r :!python3 %<cr>
 
     " setUp
     autocmd FileType python imap <buffer> sup<c-i> def setUp(self):<cr>
@@ -380,7 +380,7 @@ augroup END
 augroup VIMSCRIPT
     autocmd!
     " reload color when saving color file
-    autocmd BufWritePost ~/.vim/colors/*.vim source %
+    autocmd BufWritePost ~/proj/vimrc/colors/*.vim source %
 augroup END
 
 augroup CLOJURE
