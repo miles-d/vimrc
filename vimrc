@@ -299,6 +299,7 @@ augroup PYTHON
     autocmd FileType python imap <buffer> asf<c-i> self.assertFalse(X)<esc>FXs
     " skip test
     autocmd FileType python imap <buffer> x<c-i> @unittest.skip('X')<esc>FXs
+    autocmd FileType python inoremap <buffer> <c-r>g <esc>:call SetterAssignmentPython()<cr>
 augroup END
 
 augroup RUBY
@@ -349,6 +350,12 @@ augroup END
 function! SetterAssignmentJava()
     let l:var_name = input('Variable name: ')
     put ='this.' . var_name . ' = ' . var_name . ';'
+    normal! ==kdd
+endfunction
+
+function! SetterAssignmentPython()
+    let l:var_name = input('Variable name: ')
+    put ='self.' . var_name . ' = ' . var_name
     normal! ==kdd
 endfunction
 
