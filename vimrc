@@ -307,6 +307,11 @@ augroup RUBY
   autocmd FileType ruby imap <buffer> uh @
 augroup END
 
+augroup BASH
+  autocmd!
+  autocmd FileType sh setlocal sw=4 ts=4
+augroup END
+
 augroup PHP
     autocmd!
     " imaps
