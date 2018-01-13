@@ -174,7 +174,7 @@ let g:sexp_enable_insert_mode_mappings = 1
 
 
 " Digraphs
-inoremap <expr>  <C-K>   BDG_GetDigraph()
+" inoremap <expr>  <C-K>   BDG_GetDigraph()
 
 
 " Dispatch
@@ -250,11 +250,11 @@ augroup END
 
 " Inline variable
 function! Inline_variable()
-    normal H*``2w"zDnde"zP``dd
+    normal! H*``2w"zDnde"zP``dd
 endfunction
 
 function! Inline_variable_when_semicolon()
-    normal H*``2w"zdt;nde"zP``dd
+    normal! H*``2w"zdt;nde"zP``dd
 endfunction
 
 nmap <space>i :call Inline_variable()<CR>
@@ -314,6 +314,7 @@ augroup END
 
 augroup PHP
     autocmd!
+    autocmd FileType php setlocal sw=4 ts=4
     " imaps
     " h log
     autocmd FileType php imap <buffer> h<c-i> dd(<esc>A;<left><left>
@@ -349,6 +350,7 @@ augroup PHP
     autocmd FileType php nmap <buffer> <localleader>rs dibi<cr><esc>p:s/, /,\r/g<CR>j=ibkf(
     " array(...) to [...] - r-array
     autocmd FileType php nmap <buffer> <localleader>ra diwcs)]
+    autocmd FileType php inoremap <buffer> <c-r>g <esc>:call SetterAssignmentPhp()<cr>
 augroup END
 
 
@@ -363,6 +365,15 @@ function! SetterAssignmentPython()
     put ='self.' . var_name . ' = ' . var_name
     normal! ==kdd
 endfunction
+
+function! SetterAssignmentPhp()
+    let l:var_name = input('Variable name: ')
+    put ='$this->' . var_name . ' = $' . var_name . ';'
+    normal! ==kdd
+endfunction
+
+let g:JaveComplete_AutoStartServer = 0
+let g:ale_enabled = 0
 
 augroup JAVA
     autocmd!
@@ -393,6 +404,7 @@ augroup VIMSCRIPT
     autocmd!
     " reload color when saving color file
     autocmd BufWritePost ~/proj/vimrc/colors/*.vim source %
+    autocmd FileType vim setlocal sw=2 ts=2
 augroup END
 
 augroup CLOJURE
@@ -415,76 +427,17 @@ augroup FILETYPES
 augroup END
 
 
-
 " SELECTA
-augroup selecta_php_project
-    autocmd!
-    " j - javascript
-    nnoremap <localleader>nj :call SelectaCommand("git ls-files \| grep \.js$ \| grep -v 'test\/unit'", "", ":e")<cr>
-    " m - model
-    nnoremap <localleader>nm :call SelectaCommand("git ls-files \| grep 'Model'", "", ":e")<cr>
-    " c - controller
-    nnoremap <localleader>nc :call SelectaCommand("git ls-files \| grep 'Controller'", "", ":e")<cr>
-    " f - config (zend)
-    nnoremap <localleader>nf :call SelectaCommand("git ls-files \| grep 'src\/module.*\/module.config'", "", ":e")<cr>
-    " h - html
-    nnoremap <localleader>nh :call SelectaCommand("git ls-files \| grep 'src\/.*html'", "", ":e")<cr>
-    " nnoremap <localleader>no :call SelectaCommand("git ls-files \| grep 'src\/module.*\.Form.php'", "", ":e")<cr>
-    " t - test
-    nnoremap <localleader>nt :call SelectaCommand("git ls-files \| grep '[Tt]est.*'", "", ":e")<cr>
-    " s - css
-    nnoremap <localleader>ns :call SelectaCommand("git ls-files \| grep '.*css'", "", ":e")<cr>
-    " p - php
-    nnoremap <localleader>np :call SelectaCommand("git ls-files \| grep '.*php'", "", ":e")<cr>
-    " d - dir
-    " with find
-    " nnoremap <localleader>nd :call SelectaCommand("find . -path ./.git -prune -o -type d", "", ":e")<cr>
-    " with git
-    nnoremap <localleader>nd :call SelectaCommand("git ls-files \| sed 's:[^/]*$::' \| sed '/^$/d' \| sort -u", "", ":e")<cr>
-augroup END
-
-" Run a given vim command on the results of fuzzy selecting from a given shell
-" command. See usage below.
-function! SelectaCommand(choice_command, selecta_args, vim_command)
-  try
-    let selection = system(a:choice_command . " | selecta --height 25" . a:selecta_args)
-  catch /Vim:Interrupt/
-    " Swallow the ^C so that the redraw below happens; otherwise there will be
-    " leftovers from selecta on the screen
-    redraw!
-    return
-  endtry
-  redraw!
-  exec a:vim_command . " " . selection
-endfunction
-
-function! SelectaFile(path, glob)
-  call SelectaCommand("find " . a:path . "/* -type f -and -iname '" . a:glob . "' -and -not -iname '*.pyc'", "", ":e")
-endfunction
-
-function! SelectaIdentifier()
-  " Yank the word under the cursor into the z register
-  normal "zyiw
-  " Fuzzy match files in the current directory, starting with the word under
-  " the cursor
-  call SelectaCommand("git ls-files", "-s " . @z, ":e")
-endfunction
+nnoremap <localleader>nm :call SelectaGitFile("Model", "")<cr>
+nnoremap <localleader>nc :call SelectaGitFile("Controller", "")<cr>
+nnoremap <localleader>nt :call SelectaGitFile("[Tt]est", "")<cr>
+nnoremap <localleader>nj :call SelectaGitFile("\.js$", "test\/unit")<cr>
+nnoremap <localleader>ns :call SelectaGitFile(".*\.css", "")<cr>
+nnoremap <localleader>np :call SelectaGitFile(".*\.php", "")<cr>
+nnoremap <localleader>nd :call SelectaCommand("git ls-files \| sed 's:[^/]*$::' \| sed '/^$/d' \| sort -u", "", ":e")<cr>
 nnoremap <localleader>si :call SelectaIdentifier()<cr>
 
-
-function! SelectaBuffer()
-  let bufnrs = filter(range(1, bufnr("$")), 'buflisted(v:val)')
-  let buffers = map(bufnrs, 'bufname(v:val)')
-  call SelectaCommand('echo "' . join(buffers, "\n") . '"', "", ":b")
-endfunction
-" Fuzzy select a buffer. Open the selected buffer with :b.
-" nnoremap <leader>b :call SelectaBuffer()<cr>
 nnoremap <leader>b :call SelectaBuffer()<cr>
-
-function! SelectaArgs()
-  let args = argv()
-  call SelectaCommand('echo "' . join(args, "\n") . '"', "", ":b")
-endfunction
 nnoremap <localleader>ch :call SelectaArgs()<CR>
 nnoremap <localleader>ca :arga %<CR>
 nnoremap <localleader>cd :argd %<CR>
@@ -495,59 +448,20 @@ nnoremap <localleader>ng :call SelectaCommand("git log --oneline --decorate \| l
 nnoremap <localleader>t :call SelectaCommand("find . -path './.git' -prune -o -type f -name '*'", "", ":e")<cr>
 nnoremap <leader>t :call SelectaCommand("git ls-files", "", ":e")<cr>
 
-
 function! SwitchProject()
-  call SelectaCommand('ls -d ~/* ~/proj/* ~/doc/*', "", ":e")
+  call SelectaCommand('ls -d ~/* ~/proj/*/* ~/doc/*', "", ":e")
   normal c
 endfunction
 nnoremap <localleader>p :call SwitchProject()<cr>
 
-" COLORS
-" Figure out highlight group
-nnoremap <leader>nh :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-            \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-            \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-
-" Toggle between my two colorschemes
-function! SwitchColor()
-    if g:colors_name == 'minilight'
-        colorscheme minidark
-    elseif g:colors_name == 'minidark'
-        colorscheme minilight
-    endif
-endfunction
-
-" Toggle background to gray (or back)
-function! GreyBackground()
-  if g:colors_name == 'minilight'
-    if g:grey_background == 0
-      let l:colorcode=253
-      let g:grey_background=1
-    else
-      let l:colorcode=231
-      let g:grey_background=0
-    endif
-  elseif g:colors_name == 'minidark'
-    if g:grey_background == 0
-      let l:colorcode=239
-      let g:grey_background=1
-    else
-      let l:colorcode=232
-      let g:grey_background=0
-    endif
-  endif
-
-  execute "normal! :hi Normal ctermbg=" . colorcode . "\<cr>"
-endfunction
-
-let g:grey_background = 0
 nnoremap <leader>hg :call GreyBackground()<CR>
 nmap coe :call SwitchColor()<cr>
-
 set background=dark
 colorscheme minidark
-let g:mdr_color = 'minidark'
+let g:grey_background = 0
+let g:grey_colorschemes = ['minilight', 'minidark']
+let g:selecta_height = 25
 
 
 " HACKS
