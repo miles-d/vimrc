@@ -92,7 +92,6 @@ set viminfo^=%
 
 set t_Co=256
 set term=screen-256color
-set background=dark
 
 " do not clear screen on suspend (C-z)
 " for some reason should not be earlier in vimrc...
@@ -172,11 +171,6 @@ nmap <leader>hr :map ,r :w\\|!
 
 let g:sexp_enable_insert_mode_mappings = 1
 
-
-" Digraphs
-" inoremap <expr>  <C-K>   BDG_GetDigraph()
-
-
 " Dispatch
 let g:dispatch_tmux_height = 5
 
@@ -228,7 +222,7 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 " TOGGLELIST
 let g:toggle_list_no_mappings = 1
 let g:toggle_list_copen_command="botright copen"
-nmap <script> <silent> <localleader>q :call ToggleQuickfixList()<CR>
+nnoremap <script> <silent> <localleader>q :call ToggleQuickfixList()<CR>
 
 
 " VIMWIKI
@@ -240,7 +234,6 @@ let g:vimwiki_list = [{'path': '~/doc/wiki/',
 augroup VIMWIKI
   autocmd!
   autocmd FileType vimwiki setlocal textwidth=80
-  autocmd FileType vimwiki setlocal shiftwidth=2 tabstop=2
   autocmd FileType vimwiki setlocal keywordprg=dict
 augroup END
 
@@ -268,6 +261,7 @@ inoremap sh<c-i> #!/usr/bin/env<space>
 
 augroup COMMON_PROGRAMMING
     autocmd!
+    autocmd FileType coffee,javascript,python,vimwiki,css setlocal shiftwidth=2 tabstop=2
     autocmd FileType python,php,javascript,java,ruby iabbrev <buffer> ret return
     autocmd FileType php,java iabbrev <buffer> pv private
     autocmd FileType php,java iabbrev <buffer> pub public
@@ -283,7 +277,6 @@ augroup END
 augroup PYTHON
     autocmd!
     autocmd FileType python nnoremap <buffer> <localleader>; A:<Esc>
-    autocmd FileType python setlocal shiftwidth=2 tabstop=2
     " search for function definitions
     autocmd FileType python nmap <buffer> <space>f :vimgrep 'def ' %<CR>:cw<CR>
     autocmd FileType python imap <buffer> gj self
@@ -386,18 +379,12 @@ augroup END
 
 augroup JAVASCRIPT
     autocmd!
-    autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
     autocmd FileType javascript imap <buffer> gj this.
     autocmd FileType javascript imap <buffer> tj const 
     " h - console.log
     autocmd FileType javascript imap <buffer> h<c-i> console.log(X);<esc>FXs
     " fl - console.log current file
     autocmd FileType javascript imap <buffer> fl<c-i> console.log('<c-r>=expand("%:t")<cr>');<esc>
-augroup END
-
-augroup COFFEESCRIPT
-    autocmd!
-    autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
 augroup END
 
 augroup VIMSCRIPT
@@ -415,7 +402,6 @@ augroup END
 
 augroup CSS
     autocmd!
-    autocmd FileType css setlocal shiftwidth=2 tabstop=2
     autocmd FileType css imap <buffer> ,, !important
     autocmd FileType css nmap <buffer> ,, i !important<ESC>
 augroup END
