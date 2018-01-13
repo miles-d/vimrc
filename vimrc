@@ -463,8 +463,10 @@ let g:grey_background = 0
 let g:grey_colorschemes = ['minilight', 'minidark']
 let g:selecta_height = 25
 
+nnoremap <leader>od :call Trans("de", "pl", expand("<cword>"))<cr>
+nnoremap <leader>oe :call Trans("en", "pl", expand("<cword>"))<cr>
+vnoremap <leader>oe :call Trans("en", "pl", expand("'<,'>"))<cr>
 
-" HACKS
 
 " Turn syntax off (or on) - e.g., when working on huge file
 function! ToggleSyntax()
@@ -475,7 +477,3 @@ function! ToggleSyntax()
   endif
 endfunction
 nmap com :call ToggleSyntax()<CR>
-
-" Use `trans' command to translate current word
-nnoremap <leader>od viwy:!trans de:pl "<CR>
-nnoremap <leader>oe viwy:!trans en:pl "<CR>
