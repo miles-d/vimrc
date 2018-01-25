@@ -433,6 +433,8 @@ nnoremap <localleader>cd :argd %<CR>
 nnoremap <localleader>ng :call SelectaCommand("git log --oneline --decorate \| less -R", " \| cut -d ' ' -f 1", ":Gedit")<cr>
 nnoremap <localleader>t :call SelectaCommand("find . -path './.git' -prune -o -type f -name '*'", "", ":e")<cr>
 nnoremap <leader>t :call SelectaCommand("git ls-files", "", ":e")<cr>
+" files changed in current pull request
+nnoremap <localleader>ne :call SelectaCommand('git di $(git merge-base master HEAD) --name-only', "", ":e")<cr>
 
 function! SwitchProject()
   call SelectaCommand('ls -d ~/* ~/proj/*/* ~/doc/*', "", ":e")
