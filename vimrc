@@ -235,6 +235,7 @@ augroup VIMWIKI
   autocmd!
   autocmd FileType vimwiki setlocal textwidth=80
   autocmd FileType vimwiki setlocal keywordprg=dict
+  autocmd FileType vimwiki setlocal spell
 augroup END
 
 
