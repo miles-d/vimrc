@@ -471,3 +471,5 @@ function! ToggleSyntax()
   endif
 endfunction
 nmap com :call ToggleSyntax()<CR>
+
+nnoremap <leader>nn :silent !xsel -b <<<%<cr>
