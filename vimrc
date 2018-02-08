@@ -413,6 +413,11 @@ augroup FILETYPES
   autocmd BufNewFile,BufRead *.md setlocal ft=markdown
 augroup END
 
+augroup GIT
+  autocmd!
+  autocmd FileType gitcommit nnoremap <buffer> ,, :read !git symbolic-ref HEAD \| xargs basename<cr>kddA 
+augroup END
+
 
 " SELECTA
 nnoremap <localleader>nm :call SelectaGitFile("Model", "")<cr>
