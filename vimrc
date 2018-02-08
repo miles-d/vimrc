@@ -472,4 +472,7 @@ function! ToggleSyntax()
 endfunction
 nmap com :call ToggleSyntax()<CR>
 
+" copy current file name
 nnoremap <leader>nn :silent !xsel -b <<<%<cr>
+" insert current date in ISO format
+nnoremap <leader>nt :read !date -I<cr>kdd
