@@ -443,7 +443,8 @@ nnoremap <leader>t :call SelectaCommand("git ls-files", "", ":e")<cr>
 nnoremap <localleader>ne :call SelectaCommand('git di $(git merge-base master HEAD) --name-only', "", ":e")<cr>
 
 function! SwitchProject()
-  call SelectaCommand('ls -d ~/* ~/proj/*/* ~/doc/*', "", ":e")
+  call SelectaCommand('find $(echo $PROJECT_DIRS | tr ":" " ") -maxdepth 1 -type d', ' | while read f; do echo $f"/.gitignore"; done', ":e")
+  execute "cd %:p:h"
   normal c
 endfunction
 nnoremap <localleader>p :call SwitchProject()<cr>
