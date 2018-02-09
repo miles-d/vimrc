@@ -366,12 +366,12 @@ function! SetterAssignmentPhp()
     normal! ==kdd
 endfunction
 
-let g:JaveComplete_AutoStartServer = 0
-let g:ale_enabled = 0
+let g:JaveComplete_AutoStartServer = 1
 
 augroup JAVA
     autocmd!
     autocmd FileType java nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+    autocmd FileType java setlocal tags+=~/.javatags
     autocmd FileType java inoremap h<c-i> System.out.println();<LEFT><LEFT>
     autocmd FileType java nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
     autocmd FileType java setlocal omnifunc=javacomplete#Complete
@@ -448,6 +448,8 @@ function! SwitchProject()
 endfunction
 nnoremap <localleader>p :call SwitchProject()<cr>
 
+let g:ale_enabled = 1
+nnoremap coa :ALEToggle<cr>
 
 nnoremap <leader>hg :call GreyBackground()<CR>
 nmap coe :call SwitchColor()<cr>
