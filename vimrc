@@ -371,6 +371,7 @@ let g:JaveComplete_AutoStartServer = 1
 augroup JAVA
     autocmd!
     autocmd FileType java nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+    autocmd FileType java,pom compiler mvn
     autocmd FileType java setlocal tags+=~/.javatags
     autocmd FileType java inoremap h<c-i> System.out.println();<LEFT><LEFT>
     autocmd FileType java nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
