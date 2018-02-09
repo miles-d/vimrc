@@ -450,7 +450,7 @@ function! SwitchProject()
 endfunction
 nnoremap <localleader>p :call SwitchProject()<cr>
 
-let g:ale_enabled = 1
+let g:ale_enabled = 0
 nnoremap coa :ALEToggle<cr>
 
 nnoremap <leader>hg :call GreyBackground()<CR>
