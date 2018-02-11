@@ -75,7 +75,7 @@ hi Visual ctermfg=NONE ctermbg=254 cterm=NONE
 hi Error ctermfg=NONE ctermbg=red cterm=NONE
 hi ErrorMsg ctermfg=NONE ctermbg=red cterm=NONE
 hi WarningMsg ctermfg=NONE ctermbg=red cterm=NONE
-hi SpellBad ctermfg=NONE ctermbg=NONE cterm=NONE
+hi SpellBad ctermfg=203 ctermbg=NONE cterm=NONE
 
 hi phpFunctions ctermfg=NONE ctermbg=NONE cterm=NONE
 hi phpFunction ctermfg=NONE ctermbg=NONE cterm=BOLD
