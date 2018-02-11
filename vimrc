@@ -410,8 +410,10 @@ augroup END
 
 augroup FILETYPES
   autocmd!
-  au BufNewFile,BufRead *.html setlocal filetype=htmldjango
+  autocmd BufNewFile,BufRead *.html setlocal filetype=htmldjango
   autocmd BufNewFile,BufRead *.md setlocal ft=markdown
+  autocmd FileType remind setlocal commentstring=#\ %s
+  autocmd FileType crontab setlocal commentstring=#\ %s
 augroup END
 
 augroup GIT
