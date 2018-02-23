@@ -445,7 +445,7 @@ nnoremap <localleader>ne :call SelectaCommand('git di $(git merge-base master HE
 
 function! SwitchProject()
   call SelectaCommand('find $(echo $PROJECT_DIRS | tr ":" " ") -maxdepth 1 -type d', ' | while read f; do echo $f"/.gitignore"; done', ":e")
-  execute "cd %:p:h"
+  execute "lcd %:p:h"
   normal c
 endfunction
 nnoremap <localleader>p :call SwitchProject()<cr>
