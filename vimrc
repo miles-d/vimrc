@@ -366,14 +366,11 @@ function! SetterAssignmentPhp()
     normal! ==kdd
 endfunction
 
-let g:JaveComplete_AutoStartServer = 1
-
 augroup JAVA
     autocmd!
     autocmd FileType java nmap <leader>jh :JavaImport<cr>
     autocmd FileType java setlocal tags+=~/.javatags
     autocmd FileType java inoremap h<c-i> System.out.println();<LEFT><LEFT>
-    autocmd FileType java setlocal omnifunc=javacomplete#Complete
     autocmd FileType java inoremap <buffer> <c-r>g <esc>:call SetterAssignmentJava()<cr>
 augroup END
 
