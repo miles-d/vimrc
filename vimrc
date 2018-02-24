@@ -59,7 +59,6 @@ set foldmethod=manual
 set foldlevel=99
 set sessionoptions-=options
 set formatoptions+=j " Delete comment character when joining commented lines
-setglobal tags-=./tags tags-=./tags; tags^=./tags;
 " don't clear screen on suspend
 let g:netrw_altfile = 1
 
