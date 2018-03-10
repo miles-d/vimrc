@@ -48,10 +48,11 @@ extra_repos = [
 
 clojure_repos = [
     'https://github.com/tpope/vim-fireplace',
-    'https://github.com/guns/vim-slamhound'
+    'https://github.com/guns/vim-slamhound',
     'git://github.com/guns/vim-sexp.git',
     'git://github.com/tpope/vim-sexp-mappings-for-regular-people.git',
     'https://github.com/tpope/vim-salve',
+    'https://github.com/gregspurrier/vim-midje',
 ]
 
 other_repos = [
