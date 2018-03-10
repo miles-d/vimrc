@@ -37,13 +37,14 @@ basic_repos = [
 extra_repos = [
     'https://github.com/mattn/emmet-vim.git',
     'https://github.com/tpope/vim-flagship',
-    'https://github.com/sheerun/vim-polyglot',
+    # 'https://github.com/sheerun/vim-polyglot',
     'https://github.com/tpope/vim-projectionist',
     'https://github.com/tpope/vim-scriptease',
     'https://github.com/tpope/vim-sleuth',
     'https://github.com/milkypostman/vim-togglelist',
     'https://github.com/guns/xterm-color-table.vim',
     'https://github.com/vimwiki/vimwiki',
+    'https://github.com/tpope/vim-db',
 ]
 
 clojure_repos = [
@@ -52,7 +53,6 @@ clojure_repos = [
     'git://github.com/guns/vim-sexp.git',
     'git://github.com/tpope/vim-sexp-mappings-for-regular-people.git',
     'https://github.com/tpope/vim-salve',
-    'https://github.com/gregspurrier/vim-midje',
 ]
 
 other_repos = [
