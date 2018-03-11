@@ -176,7 +176,7 @@ let g:dispatch_tmux_height = 5
 
 " Projectionist
 nnoremap <localleader>eh :A<cr>
-nnoremap <localleader>d :w!\|:Dispatch<cr>
+nnoremap <localleader>d :w!\|:silent Dispatch<cr>
 nnoremap dc :Console<CR>
 " file-projections
 nnoremap <leader>fp :e .projections.json<cr>
