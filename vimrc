@@ -168,6 +168,10 @@ nmap <leader>hr :map ,r :w\\|!
 
 " PLUGINS
 
+if !has('gui_running')
+  let g:loaded_ctrlp = 1
+endif
+
 command! Piggie :Piggieback (figwheel-sidecar.repl-api/repl-env)
 
 let g:sexp_enable_insert_mode_mappings = 1
