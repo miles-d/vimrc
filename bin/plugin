@@ -9,11 +9,11 @@ plugin_dir = expanduser("~/.vim/bundle")
 def update_plugins():
     os.chdir(plugin_dir)
 
-    for dir in os.listdir('.'):
-        os.chdir(dir)
-        if os.path.isdir('.git'):
+    for dir in filter(os.path.isdir, os.listdir('.')):
+        if os.path.isdir(dir + '/.git'):
+            os.chdir(dir)
             os.system('git pull origin master')
-        os.chdir('..')
+            os.chdir('..')
 
 
 def get_repo_basename(link):
