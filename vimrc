@@ -454,7 +454,12 @@ nnoremap coa :ALEToggle<cr>
 nnoremap <leader>hg :call GreyBackground()<CR>
 nmap coe :call SwitchColor()<cr>
 set background=dark
-colorscheme minidark
+
+if get(g:, 'colors_name') == 0
+  colorscheme minidark
+else
+  colorscheme minilight
+endif
 let g:grey_background = 0
 let g:grey_colorschemes = ['minilight', 'minidark']
 let g:selecta_height = 25
