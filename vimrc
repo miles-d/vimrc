@@ -387,6 +387,7 @@ augroup VIMSCRIPT
     autocmd!
     " reload color when saving color file
     autocmd BufWritePost ~/proj/vimrc/colors/*.vim source %
+    autocmd BufWritePost ~/.vimrc source %
     autocmd FileType vim setlocal sw=2 ts=2
 augroup END
 
