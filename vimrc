@@ -168,6 +168,8 @@ nmap <leader>hr :map ,r :w\\|!
 
 " PLUGINS
 
+command! Piggie :Piggieback (figwheel-sidecar.repl-api/repl-env)
+
 let g:sexp_enable_insert_mode_mappings = 1
 
 " Dispatch
@@ -403,19 +405,18 @@ augroup CSS
     autocmd FileType css nmap <buffer> ,, i !important<ESC>
 augroup END
 
-augroup FILETYPES
+augroup GIT
+  autocmd!
+  autocmd FileType gitcommit nnoremap <buffer> ,, :read !git symbolic-ref HEAD \| xargs basename<cr>kddA: 
+augroup END
+
+augroup OTHER
   autocmd!
   autocmd BufNewFile,BufRead *.html setlocal filetype=htmldjango
   autocmd BufNewFile,BufRead *.md setlocal ft=markdown
   autocmd FileType remind setlocal commentstring=#\ %s
   autocmd FileType crontab setlocal commentstring=#\ %s
 augroup END
-
-augroup GIT
-  autocmd!
-  autocmd FileType gitcommit nnoremap <buffer> ,, :read !git symbolic-ref HEAD \| xargs basename<cr>kddA: 
-augroup END
-
 
 " SELECTA
 nnoremap <localleader>nm :call SelectaGitFile("Model", "")<cr>
@@ -477,5 +478,3 @@ nmap com :call ToggleSyntax()<CR>
 nnoremap <leader>nn :silent !xsel -b <<<%<cr>
 " insert current date in ISO format
 nnoremap <leader>nt :read !date -I<cr>kdd
-
-command Piggie :Piggieback (figwheel-sidecar.repl-api/repl-env)
