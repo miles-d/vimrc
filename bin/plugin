@@ -33,6 +33,7 @@ basic_repos = [
     'git://github.com/tpope/vim-commentary.git',
     'git://github.com/tpope/vim-surround.git',
     'https://github.com/tpope/vim-speeddating',
+    'https://github.com/tpope/vim-apathy',
 ]
 
 extra_repos = [
