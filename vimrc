@@ -384,9 +384,9 @@ augroup JAVASCRIPT
     autocmd FileType javascript imap <buffer> gj this.
     autocmd FileType javascript imap <buffer> tj const 
     " h - console.log
-    autocmd FileType javascript imap <buffer> h<c-i> console.log(X);<esc>FXs
+    autocmd FileType javascript imap <buffer> h<c-i> console.log(X)<esc>FXs
     " fl - console.log current file
-    autocmd FileType javascript imap <buffer> fl<c-i> console.log('<c-r>=expand("%:t")<cr>');<esc>
+    autocmd FileType javascript imap <buffer> fl<c-i> console.log('<c-r>=expand("%:t")<cr>')<esc>
 augroup END
 
 augroup VIMSCRIPT
