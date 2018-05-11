@@ -239,8 +239,8 @@ let g:vimwiki_list = [{'path': '~/doc/wiki/',
 augroup VIMWIKI
   autocmd!
   autocmd FileType vimwiki setlocal textwidth=80
-  autocmd FileType vimwiki setlocal keywordprg=dict
-  autocmd FileType vimwiki setlocal spell
+  autocmd FileType vimwiki,markdown setlocal keywordprg=dict
+  autocmd FileType vimwiki,markdown setlocal spell
 augroup END
 
 
