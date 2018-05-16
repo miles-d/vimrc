@@ -129,7 +129,7 @@ nmap <localleader>j :w<cr>
 nmap <c-n> :
 nnoremap ,, :!
 
-nmap <CR> :noh<CR>
+nnoremap <CR> :noh<CR>
 
 " Move between splits
 map <C-l> <C-W>l
@@ -487,3 +487,5 @@ nmap com :call ToggleSyntax()<CR>
 nnoremap <leader>nn :silent !xsel -b <<<%<cr>
 " insert current date in ISO format
 nnoremap <leader>nt :read !date -I<cr>kdd
+" open ranger file manager in the directory of current file
+command! Ranger :!(cd %:h ; ranger)
