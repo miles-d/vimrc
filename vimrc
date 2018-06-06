@@ -130,7 +130,7 @@ nmap <localleader>j :w<cr>
 nmap <c-n> :
 nnoremap ,, :!
 
-nmap <CR> :noh<CR>
+nnoremap <CR> :noh<CR>
 
 " Move between splits
 map <C-l> <C-W>l
@@ -240,8 +240,8 @@ let g:vimwiki_list = [{'path': '~/doc/wiki/',
 augroup VIMWIKI
   autocmd!
   autocmd FileType vimwiki setlocal textwidth=100
-  autocmd FileType vimwiki setlocal keywordprg=dict
-  autocmd FileType vimwiki setlocal spell
+  autocmd FileType vimwiki,markdown setlocal keywordprg=dict
+  autocmd FileType vimwiki,markdown setlocal spell
 augroup END
 
 
@@ -385,9 +385,9 @@ augroup JAVASCRIPT
     autocmd FileType javascript imap <buffer> gj this.
     autocmd FileType javascript imap <buffer> tj const 
     " h - console.log
-    autocmd FileType javascript imap <buffer> h<c-i> console.log(X);<esc>FXs
+    autocmd FileType javascript imap <buffer> h<c-i> console.log(X)<esc>FXs
     " fl - console.log current file
-    autocmd FileType javascript imap <buffer> fl<c-i> console.log('<c-r>=expand("%:t")<cr>');<esc>
+    autocmd FileType javascript imap <buffer> fl<c-i> console.log('<c-r>=expand("%:t")<cr>')<esc>
 augroup END
 
 augroup VIMSCRIPT
@@ -488,3 +488,5 @@ nmap com :call ToggleSyntax()<CR>
 nnoremap <leader>nn :silent !xsel -b <<<%<cr>
 " insert current date in ISO format
 nnoremap <leader>nt :read !date -I<cr>kdd
+" open ranger file manager in the directory of current file
+command! Ranger :!(cd %:h ; ranger)
