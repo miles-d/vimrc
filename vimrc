@@ -59,6 +59,7 @@ set foldmethod=manual
 set foldlevel=99
 set sessionoptions-=options
 set formatoptions+=j " Delete comment character when joining commented lines
+set cryptmethod=blowfish2
 " don't clear screen on suspend
 let g:netrw_altfile = 1
 
@@ -267,8 +268,8 @@ inoremap sh<c-i> #!/usr/bin/env<space>
 
 augroup COMMON_PROGRAMMING
     autocmd!
-    autocmd FileType coffee,javascript,python,vimwiki,css setlocal shiftwidth=2 tabstop=2
-    autocmd FileType python,php,javascript,java,ruby iabbrev <buffer> ret return
+    autocmd FileType coffee,javascript,python,vimwiki,css,ruby setlocal shiftwidth=2 tabstop=2
+    autocmd FileType python,php,javascript,java,ruby,c iabbrev <buffer> ret return
     autocmd FileType php,java iabbrev <buffer> pv private
     autocmd FileType php,java iabbrev <buffer> pub public
     autocmd FileType php,java iabbrev <buffer> pum public function
