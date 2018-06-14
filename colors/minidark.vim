@@ -38,6 +38,8 @@ hi Search  ctermfg=157 ctermbg=NONE cterm=UNDERLINE,BOLD
 
 hi String ctermfg=159 ctermbg=NONE cterm=NONE
 hi Number ctermfg=NONE ctermbg=NONE cterm=NONE
+hi cCharacter ctermfg=189 ctermbg=NONE cterm=NONE
+hi cSpecial ctermfg=NONE ctermbg=NONE cterm=BOLD
 
 hi Keyword ctermfg=NONE ctermbg=NONE cterm=NONE
 hi Conditional ctermfg=NONE ctermbg=NONE cterm=BOLD
@@ -113,6 +115,8 @@ hi markdownCode ctermfg=159 ctermbg=NONE cterm=NONE
 
 " hi rubyRegexp          ctermfg=NONE ctermbg=NONE cterm=NONE
 " hi rubyRegexpDelimiter ctermfg=NONE ctermbg=NONE cterm=NONE
+hi rubyControl ctermfg=NONE ctermbg=NONE cterm=BOLD
+hi rubyModule ctermfg=NONE ctermbg=NONE cterm=BOLD
 hi snipSnippetFooterKeyword ctermfg=47 ctermbg=NONE cterm=NONE
 hi link snipSnippetHeaderKeyword snipSnippetFooterKeyword
 hi snipSnippetTrigger ctermfg=50 ctermbg=NONE cterm=NONE

@@ -44,6 +44,8 @@ hi PmenuSel ctermfg=NONE ctermbg=NONE cterm=REVERSE
 " Syntax highlighting
 hi String ctermfg=19 ctermbg=NONE cterm=NONE
 hi Number ctermfg=NONE ctermbg=NONE cterm=NONE
+hi cCharacter ctermfg=163 ctermbg=NONE cterm=NONE
+hi cSpecial ctermfg=165 ctermbg=NONE cterm=BOLD
 
 hi Keyword ctermfg=NONE ctermbg=NONE cterm=NONE
 hi Conditional ctermfg=NONE ctermbg=NONE cterm=BOLD
@@ -127,6 +129,8 @@ hi link VimwikiCode VimwikiPre
 " hi rubyRegexp          ctermfg=NONE ctermbg=NONE cterm=NONE
 " hi rubyRegexpDelimiter ctermfg=NONE ctermbg=NONE cterm=NONE
 hi ColorColumn ctermbg=253
+hi rubyControl ctermfg=NONE ctermbg=NONE cterm=BOLD
+hi rubyModule ctermfg=NONE ctermbg=NONE cterm=BOLD
 
 hi SpecialText ctermfg=129
 hi NonText ctermfg=129
