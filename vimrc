@@ -232,9 +232,9 @@ nnoremap <script> <silent> <localleader>q :call ToggleQuickfixList()<CR>
 
 " VIMWIKI
 nmap <leader>wn :e ~/doc/Notes.md<CR>
-let g:vimwiki_list = [{'path': '~/doc/wiki/',
-            \ 'syntax': 'default', 'ext': '.vimwiki'},
-            \ {'path': '~/doc/prv/', 'ext': '.vimwiki'}]
+let g:vimwiki_list = [
+      \ {'path': '~/doc/wiki/', 'syntax': 'default', 'ext': '.vimwiki'},
+      \ {'path': '~/doc/kwiki/', 'syntax': 'default', 'ext': '.vimwiki'}]
 
 augroup VIMWIKI
   autocmd!
