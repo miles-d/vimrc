@@ -420,6 +420,7 @@ augroup OTHER
   autocmd BufNewFile,BufRead *.md setlocal ft=markdown
   autocmd FileType remind setlocal commentstring=#\ %s
   autocmd FileType crontab setlocal commentstring=#\ %s
+  autocmd FileType yaml setlocal foldmethod=syntax
 augroup END
 
 " SELECTA
