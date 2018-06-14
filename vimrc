@@ -17,7 +17,7 @@ set wildmode=longest,list
 set nocursorline
 set expandtab
 set switchbuf=useopen
-set winwidth=79
+set winwidth=99
 set nowrap
 set textwidth=0
 set autoindent
@@ -238,7 +238,7 @@ let g:vimwiki_list = [{'path': '~/doc/wiki/',
 
 augroup VIMWIKI
   autocmd!
-  autocmd FileType vimwiki setlocal textwidth=80
+  autocmd FileType vimwiki setlocal textwidth=90
   autocmd FileType vimwiki,markdown setlocal keywordprg=dict
   autocmd FileType vimwiki,markdown setlocal spell
 augroup END
