@@ -120,6 +120,7 @@ hi colorColumn ctermfg=NONE ctermbg=254 cterm=NONE
 
 hi vimWikiHeader2 ctermfg=238 ctermbg=NONE cterm=BOLD
 hi vimWikiHeader1 ctermfg=238 ctermbg=NONE cterm=BOLD
+hi vimWikiBold ctermfg=NONE ctermbg=NONE cterm=BOLD
 hi vimWikiList ctermfg=NONE ctermbg=NONE cterm=NONE
 hi VimwikiLink cterm=bold,underline ctermfg=69 ctermbg=NONE
 hi VimwikiListTodo cterm=BOLD ctermfg=NONE ctermbg=NONE
