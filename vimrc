@@ -53,7 +53,7 @@ set shell=/bin/bash
 set autoread
 set tabpagemax=50
 set completeopt=menu
-set listchars=tab:>-,nbsp:_,trail:.
+set listchars=tab:>-,nbsp:_,trail:.,space:·
 set nolist
 set foldmethod=manual
 set foldlevel=99
