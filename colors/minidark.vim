@@ -104,8 +104,10 @@ hi Conceal ctermfg=NONE ctermbg=NONE cterm=NONE
 hi MoreMsg ctermfg=NONE ctermbg=NONE cterm=NONE
 hi Question ctermfg=NONE ctermbg=NONE cterm=NONE
 hi qfFileName ctermfg=NONE cterm=NONE 
-hi vimWikiHeader2 ctermfg=NONE ctermbg=NONE cterm=BOLD
 hi vimWikiHeader1 ctermfg=NONE ctermbg=NONE cterm=BOLD
+hi vimWikiHeader2 ctermfg=NONE ctermbg=NONE cterm=BOLD
+hi vimWikiHeader3 ctermfg=NONE ctermbg=NONE cterm=BOLD
+hi vimWikiHeaderChar ctermfg=NONE ctermbg=NONE cterm=BOLD
 hi vimWikiBold ctermfg=NONE ctermbg=NONE cterm=BOLD
 hi vimWikiList ctermfg=NONE ctermbg=NONE cterm=NONE
 hi vimWikiPre ctermfg=159 ctermbg=NONE cterm=NONE

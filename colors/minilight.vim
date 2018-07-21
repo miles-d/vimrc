@@ -116,10 +116,13 @@ hi Conceal ctermfg=NONE ctermbg=NONE cterm=NONE
 hi MoreMsg ctermfg=NONE ctermbg=NONE cterm=NONE
 hi Question ctermfg=NONE ctermbg=NONE cterm=NONE
 hi qfFileName ctermfg=NONE cterm=NONE 
-hi colorColumn ctermfg=NONE ctermbg=254 cterm=NONE
+" Vertical line at the text width limit
+hi colorColumn ctermfg=NONE ctermbg=NONE cterm=NONE
 
-hi vimWikiHeader2 ctermfg=238 ctermbg=NONE cterm=BOLD
 hi vimWikiHeader1 ctermfg=238 ctermbg=NONE cterm=BOLD
+hi vimWikiHeader2 ctermfg=238 ctermbg=NONE cterm=BOLD
+hi vimWikiHeader3 ctermfg=238 ctermbg=NONE cterm=BOLD
+hi vimWikiHeaderChar ctermfg=238 ctermbg=NONE cterm=BOLD
 hi vimWikiBold ctermfg=NONE ctermbg=NONE cterm=BOLD
 hi vimWikiList ctermfg=NONE ctermbg=NONE cterm=NONE
 hi VimwikiLink cterm=bold,underline ctermfg=69 ctermbg=NONE
