@@ -388,6 +388,7 @@ augroup JAVASCRIPT
     autocmd FileType javascript imap <buffer> h<c-i> console.log(X)<esc>FXs
     " fl - console.log current file
     autocmd FileType javascript imap <buffer> fl<c-i> console.log('<c-r>=expand("%:t")<cr>')<esc>
+    autocmd FileType javascript nnoremap ,cc "zyiwoconsole.log('<c-r>z', <c-r>z)<esc>
 augroup END
 
 augroup VIMSCRIPT
