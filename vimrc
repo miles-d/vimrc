@@ -490,5 +490,6 @@ nmap com :call ToggleSyntax()<CR>
 nnoremap <leader>nn :silent !xsel -b <<<%<cr>
 " insert current date in ISO format
 nnoremap <leader>nt :read !date -I<cr>kdd
+inoremap dts <C-R>=strftime('%Y-%m-%d')<CR>
 " open ranger file manager in the directory of current file
 command! Ranger :!(cd %:h ; ranger)
