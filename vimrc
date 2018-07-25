@@ -237,6 +237,9 @@ let g:vimwiki_list = [
       \ {'path': '~/doc/wiki/', 'syntax': 'default', 'ext': '.vimwiki'},
       \ {'path': '~/doc/kwiki/', 'syntax': 'default', 'ext': '.vimwiki'}]
 
+let g:vimwiki_folding = 'syntax'
+
+
 augroup VIMWIKI
   autocmd!
   autocmd FileType vimwiki setlocal textwidth=100
