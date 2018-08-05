@@ -89,10 +89,10 @@ hi jsFunctionKey ctermfg=229 ctermbg=NONE cterm=BOLD
 hi PythonFunction ctermfg=123 ctermbg=NONE cterm=BOLD
 hi Function ctermfg=230 ctermbg=NONE cterm=BOLD
 
-highlight DiffAdd term=NONE cterm=bold ctermbg=34 ctermfg=NONE
-highlight DiffChange term=reverse cterm=bold ctermbg=75 ctermfg=NONE
-highlight DiffText term=reverse cterm=bold ctermbg=26 ctermfg=NONE
-highlight DiffDelete term=reverse cterm=bold ctermbg=NONE ctermfg=NONE
+highlight DiffAdd term=NONE cterm=NONE ctermbg=NONE ctermfg=45
+highlight DiffChange term=NONE cterm=NONE ctermbg=17 ctermfg=NONE
+highlight DiffText term=NONE cterm=NONE ctermbg=26 ctermfg=NONE
+highlight DiffDelete term=reverse cterm=NONE ctermbg=NONE ctermfg=NONE
 
 " highlight PmenuSel ctermfg=white ctermbg=black
 highlight VimwikiLink cterm=bold,underline ctermfg=159 ctermbg=NONE
