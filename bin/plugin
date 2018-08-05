@@ -46,7 +46,7 @@ extra_repos = [
     'https://github.com/milkypostman/vim-togglelist',
     'https://github.com/guns/xterm-color-table.vim',
     'https://github.com/vimwiki/vimwiki',
-    'https://github.com/tpope/vim-db',
+    # 'https://github.com/tpope/vim-db',
 ]
 
 clojure_repos = [
