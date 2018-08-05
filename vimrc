@@ -214,7 +214,6 @@ nnoremap <localleader>hb :Gblame<CR>
 nnoremap <localleader>hs :Git st<CR>
 nnoremap <localleader>hw :Gwrite<CR>
 nnoremap <localleader>hd :Gdiff<CR>
-nnoremap <localleader>hh :Ggrep 
 " Git grep current word
 nnoremap <leader>p "zyiw :execute "Ggrep! " . shellescape('\b' . expand("<cword>") . '\b') . " -- ':!*.min.js' ."<cr>
 " Replace all found occurrences; intended to be run after the above.
@@ -244,7 +243,6 @@ augroup VIMWIKI
   autocmd!
   autocmd FileType vimwiki setlocal textwidth=100
   autocmd FileType vimwiki,markdown setlocal keywordprg=dict
-  autocmd FileType vimwiki,markdown setlocal spell
 augroup END
 
 
@@ -416,7 +414,7 @@ augroup END
 
 augroup GIT
   autocmd!
-  autocmd FileType gitcommit nnoremap <buffer> ,, :read !git symbolic-ref HEAD \| xargs basename<cr>kddA: 
+  autocmd FileType gitcommit nnoremap <buffer> ,, :read !git symbolic-ref HEAD \| xargs basename<cr>kddA 
 augroup END
 
 augroup OTHER
