@@ -428,13 +428,19 @@ augroup END
 
 " SELECTA
 nnoremap <localleader>nm :call SelectaGitFile("Model", "")<cr>
-nnoremap <localleader>nc :call SelectaGitFile("Controller", "")<cr>
+" nnoremap <localleader>nc :call SelectaGitFile("Controller", "")<cr>
 nnoremap <localleader>nt :call SelectaGitFile("[Tt]est", "")<cr>
 nnoremap <localleader>nj :call SelectaGitFile("\.js$", "test\/unit")<cr>
-nnoremap <localleader>ns :call SelectaGitFile(".*\.css", "")<cr>
+" nnoremap <localleader>ns :call SelectaGitFile(".*\.css", "")<cr>
 nnoremap <localleader>np :call SelectaGitFile(".*\.php", "")<cr>
 nnoremap <localleader>nd :call SelectaCommand("git ls-files \| sed 's:[^/]*$::' \| sed '/^$/d' \| sort -u", "", ":e")<cr>
 nnoremap <localleader>si :call SelectaIdentifier()<cr>
+
+" SELECTA react+redux project
+nnoremap <localleader>ns :call SelectaGitFile("selectors", "")<cr>
+nnoremap <localleader>na :call SelectaGitFile("actions", "")<cr>
+nnoremap <localleader>nc :call SelectaGitFile("components", "")<cr>
+nnoremap <localleader>nr :call SelectaGitFile("reducers", "")<cr>
 
 nnoremap <leader>b :call SelectaBuffer()<cr>
 nnoremap <localleader>ch :call SelectaArgs()<CR>
