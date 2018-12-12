@@ -500,3 +500,5 @@ command! Ranger :!(cd %:h ; ranger)
 
 " insert current date in ISO format
 iabbrev <silent> dst <C-R>=strftime("%Y-%m-%d")<cr>
+" insert current file name without extension
+iabbrev <silent> crr <C-R>=expand('%:t:r')<cr>
