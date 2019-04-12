@@ -285,6 +285,7 @@ augroup END
 augroup PYTHON
     autocmd!
     autocmd FileType python nnoremap <buffer> <localleader>; A:<Esc>
+    autocmd FileType python nnoremap ,cc "zyiwoprint('<c-r>z', <c-r>z)<esc>
     " search for function definitions
     autocmd FileType python nmap <buffer> <space>f :vimgrep 'def ' %<CR>:cw<CR>
     autocmd FileType python imap <buffer> gj self
