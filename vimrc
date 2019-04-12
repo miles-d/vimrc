@@ -215,7 +215,7 @@ nnoremap <localleader>hs :Git st<CR>
 nnoremap <localleader>hw :Gwrite<CR>
 nnoremap <localleader>hd :Gdiff<CR>
 " Git grep current word
-nnoremap <leader>p :execute "Ggrep! " . shellescape('\b' . expand("<cword>") . '\b')<cr>
+nnoremap <leader>p "zyiw :execute "Ggrep! " . shellescape('\b' . expand("<cword>") . '\b')<cr>
 " Replace all found occurrences; intended to be run after the above.
 " Uses register z
 nnoremap <leader>gr :cdo s/\<<c-r>z\>//<left>
