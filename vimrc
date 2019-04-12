@@ -381,10 +381,33 @@ augroup JAVA
     autocmd FileType java inoremap <buffer> <c-r>g <esc>:call SetterAssignmentJava()<cr>
 augroup END
 
+" Insert method binding on next line
+function! JsBind()
+  call inputsave()
+  let name = input('Method name: ')
+  call inputrestore()
+  let line_text = 'this.' . name . ' = this.' . name . '.bind(this)'
+  call append('.', line_text)
+  normal! j==^
+endfunction
+
+" Find end of constructor, and insert binding for method under cursor
+function! JsBindInConstructor()
+  let name = expand("<cword>")
+  keepjumps normal! gg
+  " go to the end of the constructor
+  keepjumps normal! /\<constructor\>]Mk
+  let line_text = 'this.' . name . ' = this.' . name . '.bind(this)'
+  call append('.', line_text)
+  normal! j==^
+endfunction
+
 augroup JAVASCRIPT
     autocmd!
     autocmd FileType javascript imap <buffer> gj this.
     autocmd FileType javascript imap <buffer> tj const 
+    autocmd FileType javascript nnoremap <buffer> <leader>jb :call JsBind()<cr>
+    autocmd FileType javascript nnoremap <buffer> <leader>jib :call JsBindInConstructor()<cr>
     " h - console.log
     autocmd FileType javascript imap <buffer> h<c-i> console.log(X)<esc>FXs
     " fl - console.log current file
