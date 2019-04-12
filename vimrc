@@ -438,7 +438,7 @@ augroup END
 
 augroup GIT
   autocmd!
-  autocmd FileType gitcommit nnoremap <buffer> ,, :read !git symbolic-ref HEAD \| xargs basename<cr>kddA 
+  autocmd FileType gitcommit nnoremap <buffer> ,, :read !git symbolic-ref HEAD \| xargs basename \| sed -E 's/[^0-9]+$//'<cr>kddA 
 augroup END
 
 augroup OTHER
