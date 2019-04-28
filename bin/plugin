@@ -4,23 +4,29 @@ import os, sys
 from os.path import expanduser
 
 options = sys.argv[1:]
-plugin_dir = expanduser("~/.vim/bundle")
+plugin_dir = expanduser("~/.vim/pack")
 
 def update_plugins():
     os.chdir(plugin_dir)
 
     for dir in filter(os.path.isdir, os.listdir('.')):
-        if os.path.isdir(dir + '/.git'):
-            os.chdir(dir)
-            os.system('git pull origin master')
-            os.chdir('..')
+        print(dir + '/start')
+        os.chdir(dir + '/start')
+        for plugin in filter(os.path.isdir, os.listdir('.')):
+            print(plugin)
+            if os.path.isdir(plugin + '/.git'):
+                os.chdir(plugin)
+                os.system('git pull origin master')
+                os.chdir('..')
+        os.chdir('../..')
+
 
 
 def get_repo_basename(link):
     return link.split('/')[-1]
 
 
-basic_repos = [
+tpope_repos = [
     'https://github.com/tpope/vim-unimpaired',
     'https://github.com/tpope/vim-abolish',
     'https://github.com/tpope/vim-dispatch',
@@ -34,35 +40,29 @@ basic_repos = [
     'git://github.com/tpope/vim-surround.git',
     'https://github.com/tpope/vim-speeddating',
     'https://github.com/tpope/vim-apathy',
-]
-
-extra_repos = [
-    'https://github.com/mattn/emmet-vim.git',
     'https://github.com/tpope/vim-flagship',
-    # 'https://github.com/sheerun/vim-polyglot',
     'https://github.com/tpope/vim-projectionist',
     'https://github.com/tpope/vim-scriptease',
     'https://github.com/tpope/vim-sleuth',
+    # 'https://github.com/tpope/vim-db',
+    ]
+
+other_repos = [
+    'https://github.com/mattn/emmet-vim.git',
     'https://github.com/milkypostman/vim-togglelist',
     'https://github.com/guns/xterm-color-table.vim',
     'https://github.com/vimwiki/vimwiki',
-    # 'https://github.com/tpope/vim-db',
-]
-
-clojure_repos = [
     'https://github.com/tpope/vim-fireplace',
     'https://github.com/guns/vim-slamhound',
     'git://github.com/guns/vim-sexp.git',
     'git://github.com/tpope/vim-sexp-mappings-for-regular-people.git',
     'https://github.com/tpope/vim-salve',
+    # 'https://github.com/sheerun/vim-polyglot',
+    # 'https://github.com/kovisoft/slimv',
+    # 'https://github.com/JalaiAmitahl/maven-compiler.vim',
 ]
 
-other_repos = [
-    'https://github.com/kovisoft/slimv',
-    'https://github.com/JalaiAmitahl/maven-compiler.vim',
-]
-
-
+# TODO take prefix dir and optionally create it
 def install_plugins(repos):
     os.chdir(plugin_dir)
     for repo_link in repos:
@@ -76,7 +76,7 @@ if '--update' in options:
     options.remove('--update')
 
 if '--basic' in options:
-    install_plugins(basic_repos)
+    install_plugins(tpope_repos)
     options.remove('--basic')
 
 if '--extra' in options:
