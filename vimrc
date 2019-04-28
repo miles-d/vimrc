@@ -233,7 +233,7 @@ nnoremap <script> <silent> <localleader>q :call ToggleQuickfixList()<CR>
 " VIMWIKI
 nmap <leader>wn :e ~/doc/Notes.md<CR>
 let g:vimwiki_list = [
-      \ {'path': '~/doc/wiki/', 'syntax': 'default', 'ext': '.vimwiki'},
+      \ {'path': '~/doc/wiki/', 'syntax': 'default', 'ext': '.vimwiki', 'auto_toc': 1},
       \ {'path': '~/doc/kwiki/', 'syntax': 'default', 'ext': '.vimwiki'}]
 
 let g:vimwiki_folding = 'syntax'
