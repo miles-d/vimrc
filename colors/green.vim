@@ -59,8 +59,8 @@ hi Operator ctermfg=NONE ctermbg=NONE cterm=NONE
 
 hi Comment ctermfg=252 ctermbg=NONE cterm=NONE
 
-hi StatusLine  ctermfg=white ctermbg=244 cterm=NONE
-hi StatusLineNC ctermfg=NONE ctermbg=241 cterm=NONE
+hi StatusLine  ctermfg=black ctermbg=green cterm=NONE
+hi StatusLineNC ctermfg=green ctermbg=22 cterm=NONE
 hi VertSplit ctermbg=245 ctermfg=NONE cterm=NONE
 hi LineNr ctermfg=246
 hi Visual ctermfg=NONE ctermbg=236 cterm=NONE
@@ -95,7 +95,7 @@ highlight DiffText term=NONE cterm=NONE ctermbg=26 ctermfg=NONE
 highlight DiffDelete term=reverse cterm=NONE ctermbg=NONE ctermfg=NONE
 
 " highlight PmenuSel ctermfg=white ctermbg=black
-highlight VimwikiLink cterm=bold,underline ctermfg=159 ctermbg=NONE
+highlight VimwikiLink cterm=bold,underline ctermfg=green ctermbg=NONE
 
 " directory color in Netrw listing
 hi netrwDir ctermfg=81 ctermbg=NONE cterm=NONE
