@@ -215,7 +215,7 @@ nnoremap <localleader>hs :Git st<CR>
 nnoremap <localleader>hw :Gwrite<CR>
 nnoremap <localleader>hd :Gdiff<CR>
 " Git grep current word
-nnoremap <leader>p "zyiw :execute "Ggrep! " . shellescape('\b' . expand("<cword>") . '\b') . " -- ':!*.min.js' ."<cr>
+nnoremap <leader>p "zyiw :execute "Ggrep! " . shellescape('\b' . expand("<cword>") . '\b')<cr>
 " Replace all found occurrences; intended to be run after the above.
 " Uses register z
 nnoremap <leader>gr :cdo s/\<<c-r>z\>//<left>
@@ -285,6 +285,7 @@ augroup END
 augroup PYTHON
     autocmd!
     autocmd FileType python nnoremap <buffer> <localleader>; A:<Esc>
+    autocmd FileType python nnoremap ,cc "zyiwoprint('<c-r>z', <c-r>z)<esc>
     " search for function definitions
     autocmd FileType python nmap <buffer> <space>f :vimgrep 'def ' %<CR>:cw<CR>
     autocmd FileType python imap <buffer> gj self
@@ -381,10 +382,33 @@ augroup JAVA
     autocmd FileType java inoremap <buffer> <c-r>g <esc>:call SetterAssignmentJava()<cr>
 augroup END
 
+" Insert method binding on next line
+function! JsBind()
+  call inputsave()
+  let name = input('Method name: ')
+  call inputrestore()
+  let line_text = 'this.' . name . ' = this.' . name . '.bind(this)'
+  call append('.', line_text)
+  normal! j==^
+endfunction
+
+" Find end of constructor, and insert binding for method under cursor
+function! JsBindInConstructor()
+  let name = expand("<cword>")
+  keepjumps normal! gg
+  " go to the end of the constructor
+  keepjumps normal! /\<constructor\>]Mk
+  let line_text = 'this.' . name . ' = this.' . name . '.bind(this)'
+  call append('.', line_text)
+  normal! j==^
+endfunction
+
 augroup JAVASCRIPT
     autocmd!
     autocmd FileType javascript imap <buffer> gj this.
     autocmd FileType javascript imap <buffer> tj const 
+    autocmd FileType javascript nnoremap <buffer> <leader>jb :call JsBind()<cr>
+    autocmd FileType javascript nnoremap <buffer> <leader>jib :call JsBindInConstructor()<cr>
     " h - console.log
     autocmd FileType javascript imap <buffer> h<c-i> console.log(X)<esc>FXs
     " fl - console.log current file
@@ -414,7 +438,7 @@ augroup END
 
 augroup GIT
   autocmd!
-  autocmd FileType gitcommit nnoremap <buffer> ,, :read !git symbolic-ref HEAD \| xargs basename<cr>kddA 
+  autocmd FileType gitcommit nnoremap <buffer> ,, :read !git symbolic-ref HEAD \| xargs basename \| sed -E 's/[^0-9]+$//'<cr>kddA 
 augroup END
 
 augroup OTHER
@@ -494,11 +518,12 @@ endfunction
 nmap com :call ToggleSyntax()<CR>
 
 " copy current file name
-nnoremap <leader>nn :silent !xsel -b <<<%<cr>
+nnoremap <leader>nn :silent !pbcopy <<<%<cr>
 " open ranger file manager in the directory of current file
 command! Ranger :!(cd %:h ; ranger)
 
 " insert current date in ISO format
 iabbrev <silent> dst <C-R>=strftime("%Y-%m-%d")<cr>
+iabbrev <silent> ddst <C-R>=strftime("%Y-%m-%dT%H:%M:%S.000Z")<cr>
 " insert current file name without extension
 iabbrev <silent> crr <C-R>=expand('%:t:r')<cr>
