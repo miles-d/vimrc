@@ -1,8 +1,5 @@
 autocmd!
 
-" runtime bundle/vim-pathogen/autoload/pathogen.vim
-" execute pathogen#infect()
-
 set nocompatible
 set hidden
 set history=500
