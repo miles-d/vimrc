@@ -14,7 +14,7 @@ set wildmode=longest,list
 set nocursorline
 set expandtab
 set switchbuf=useopen
-set winwidth=99
+set winwidth=80
 set wrap
 set textwidth=0
 set autoindent
