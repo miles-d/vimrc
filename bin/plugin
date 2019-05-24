@@ -4,7 +4,7 @@ import os, sys
 from os.path import expanduser
 
 options = sys.argv[1:]
-plugin_dir = expanduser("~/.vim/pack/start")
+plugin_dir = expanduser("~/.vim/pack/mdr/start")
 
 def update_plugins():
     os.chdir(plugin_dir)
@@ -63,6 +63,8 @@ other_repos = [
 
 # TODO take prefix dir and optionally create it
 def install_plugins(repos):
+    if not os.path.isdir(plugin_dir):
+        os.makedirs(plugin_dir)
     os.chdir(plugin_dir)
     for repo_link in repos:
         if os.path.isfile(get_repo_basename(repo_link)):
