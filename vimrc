@@ -110,6 +110,8 @@ map j gj
 map k gk
 nnoremap H ^
 nnoremap L $
+nnoremap <Down> <c-f>
+nnoremap <Up> <c-b>
 
 let mapleader = ","
 let maplocalleader = "\<Space>" 
