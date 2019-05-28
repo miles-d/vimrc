@@ -4,7 +4,7 @@ import os, sys
 from os.path import expanduser
 
 options = sys.argv[1:]
-plugin_dir = expanduser("~/.vim/pack")
+plugin_dir = expanduser("~/.vim/pack/mdr/start")
 
 def update_plugins():
     os.chdir(plugin_dir)
@@ -63,6 +63,8 @@ other_repos = [
 
 # TODO take prefix dir and optionally create it
 def install_plugins(repos):
+    if not os.path.isdir(plugin_dir):
+        os.makedirs(plugin_dir)
     os.chdir(plugin_dir)
     for repo_link in repos:
         if os.path.isfile(get_repo_basename(repo_link)):
@@ -78,16 +80,8 @@ if '--basic' in options:
     install_plugins(tpope_repos)
     options.remove('--basic')
 
-if '--extra' in options:
-    install_plugins(extra_repos)
-    options.remove('--extra')
-
-if '--clojure' in options:
-    install_plugins(clojure_repos)
-    options.remove('--clojure')
-
 if '--all' in options:
-    install_plugins(basic_repos + extra_repos + clojure_repos + other_repos)
+    install_plugins(tpope_repos + other_repos)
     options.remove('--all')
 
 
@@ -97,7 +91,6 @@ if len(sys.argv) == 1 or len(options) != 0:
         --update
         --basic
         --extra
-        --clojure
         --all
         """
     print(help)
