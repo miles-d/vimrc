@@ -66,7 +66,7 @@ hi Special ctermfg=NONE ctermbg=NONE cterm=NONE
 hi Delimiter ctermfg=NONE ctermbg=NONE cterm=NONE
 hi Operator ctermfg=NONE ctermbg=NONE cterm=NONE
 
-hi Comment ctermfg=239  cterm=NONE
+hi Comment ctermfg=17 cterm=BOLD
 
 hi StatusLineNC  ctermfg=NONE ctermbg=NONE cterm=REVERSE " command-t top bar
 hi VertSplit ctermbg=NONE ctermfg=NONE cterm=REVERSE

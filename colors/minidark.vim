@@ -57,7 +57,7 @@ hi Special ctermfg=NONE ctermbg=NONE cterm=NONE
 hi Delimiter ctermfg=NONE ctermbg=NONE cterm=NONE
 hi Operator ctermfg=NONE ctermbg=NONE cterm=NONE
 
-hi Comment ctermfg=252 ctermbg=NONE cterm=NONE
+hi Comment ctermfg=229 ctermbg=NONE cterm=BOLD
 
 hi StatusLine  ctermfg=white ctermbg=244 cterm=NONE
 hi StatusLineNC ctermfg=NONE ctermbg=241 cterm=NONE
