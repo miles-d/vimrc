@@ -9,16 +9,12 @@ plugin_dir = expanduser("~/.vim/pack/mdr/start")
 def update_plugins():
     os.chdir(plugin_dir)
 
-    for dir in filter(os.path.isdir, os.listdir('.')):
-        print(dir + '/start')
-        os.chdir(dir + '/start')
-        for plugin in filter(os.path.isdir, os.listdir('.')):
-            print(plugin)
-            if os.path.isdir(plugin + '/.git'):
-                os.chdir(plugin)
-                os.system('git pull origin master')
-                os.chdir('..')
-        os.chdir('../..')
+    for plugin in filter(os.path.isdir, os.listdir('.')):
+        print(plugin)
+        if os.path.isdir(plugin + '/.git'):
+            os.chdir(plugin)
+            os.system('git pull origin master')
+            os.chdir('..')
 
 
 
