@@ -145,3 +145,11 @@ hi sqlKeyword ctermfg=NONE ctermbg=NONE cterm=BOLD
 hi sqlStatement ctermfg=NONE ctermbg=NONE cterm=BOLD
 hi clojureKeyword ctermfg=NONE ctermbg=NONE cterm=BOLD
 hi clojureDefine ctermfg=NONE ctermbg=NONE cterm=BOLD
+
+hi schemeSyntax ctermfg=159 ctermbg=NONE cterm=NONE
+hi schemeQuoted ctermfg=122 ctermbg=NONE cterm=NONE
+hi schemeBoolean ctermfg=NONE ctermbg=NONE cterm=BOLD
+" hi scheme ctermfg=120 ctermbg=NONE cterm=NONE
+hi link racketSyntax schemeSyntax
+hi link racketQuoted schemeQuoted
+hi link racketBoolean schemeBoolean
