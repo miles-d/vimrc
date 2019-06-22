@@ -52,6 +52,7 @@ other_repos = [
     'git://github.com/guns/vim-sexp.git',
     'git://github.com/tpope/vim-sexp-mappings-for-regular-people.git',
     'https://github.com/tpope/vim-salve',
+    'https://github.com/wlangstroth/vim-racket',
     # 'https://github.com/sheerun/vim-polyglot',
     # 'https://github.com/kovisoft/slimv',
     # 'https://github.com/JalaiAmitahl/maven-compiler.vim',
