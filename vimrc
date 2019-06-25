@@ -487,6 +487,9 @@ nnoremap <localleader>p :call SwitchProject()<cr>
 
 let g:ale_enabled = 0
 nnoremap coa :ALEToggle<cr>
+let g:ale_linters = {
+\   'javascript': ['jslint'],
+\}
 
 nnoremap <leader>hg :call GreyBackground()<CR>
 nmap coe :call SwitchColor()<cr>
@@ -526,3 +529,10 @@ iabbrev <silent> dst <C-R>=strftime("%Y-%m-%d")<cr>
 iabbrev <silent> ddst <C-R>=strftime("%Y-%m-%dT%H:%M:%S.000Z")<cr>
 " insert current file name without extension
 iabbrev <silent> crr <C-R>=expand('%:t:r')<cr>
+
+function! EditCurrentColorScheme()
+  let colorscheme_path = '~/.vim/colors/' . get(g:, 'colors_name') . '.vim'
+  execute "edit " . colorscheme_path
+endfunction
+
+command! Ecolor :call EditCurrentColorScheme()

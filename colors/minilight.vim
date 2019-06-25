@@ -167,3 +167,11 @@ hi sqlStatement ctermfg=NONE ctermbg=NONE cterm=BOLD
 
 hi javaAnnotation ctermfg=NONE ctermbg=NONE cterm=BOLD
 hi javaStatement ctermfg=NONE ctermbg=NONE cterm=BOLD
+
+hi schemeSyntax ctermfg=126 ctermbg=NONE cterm=NONE
+hi racketFunc ctermfg=126 ctermbg=NONE cterm=NONE
+hi schemeQuoted ctermfg=125 ctermbg=NONE cterm=NONE
+hi schemeBoolean ctermfg=NONE ctermbg=NONE cterm=BOLD
+hi link racketSyntax schemeSyntax
+hi link racketQuoted schemeQuoted
+hi link racketBoolean schemeBoolean
