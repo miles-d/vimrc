@@ -488,7 +488,7 @@ nnoremap <localleader>p :call SwitchProject()<cr>
 let g:ale_enabled = 0
 nnoremap coa :ALEToggle<cr>
 let g:ale_linters = {
-\   'javascript': ['jslint'],
+\   'javascript': ['eslint'],
 \}
 
 nnoremap <leader>hg :call GreyBackground()<CR>
