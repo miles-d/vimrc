@@ -3,7 +3,7 @@ hi clear
 
 let colors_name = "green"
 
-hi Normal  ctermfg=40 ctermbg=232 cterm=NONE guibg=yellow
+hi Normal  ctermfg=15 ctermbg=232 cterm=NONE guibg=yellow
 hi NonText  ctermfg=245 ctermbg=NONE cterm=NONE
 
 hi Cursor  ctermfg=black ctermbg=NONE cterm=NONE
@@ -62,7 +62,7 @@ hi Comment ctermfg=252 ctermbg=NONE cterm=NONE
 hi StatusLine  ctermfg=black ctermbg=green cterm=NONE
 hi StatusLineNC ctermfg=green ctermbg=22 cterm=NONE
 hi VertSplit ctermbg=245 ctermfg=NONE cterm=NONE
-hi LineNr ctermfg=246
+hi LineNr ctermfg=15 cterm=BOLD
 hi Visual ctermfg=NONE ctermbg=236 cterm=NONE
 
 hi Error ctermfg=NONE ctermbg=red cterm=NONE
@@ -127,9 +127,9 @@ hi ColorColumn ctermfg=NONE ctermbg=NONE
 hi htmlError ctermfg=215 ctermbg=NONE cterm=UNDERLINE
 
 hi diffRemoved ctermfg=196 ctermbg=232 cterm=NONE
-hi diffAdded ctermfg=40 ctermbg=NONE cterm=NONE
+hi diffAdded ctermfg=15 ctermbg=NONE cterm=NONE
 
-highlight TestOk    ctermfg=40
+highlight TestOk    ctermfg=15
 highlight TestError ctermfg=203
 
 hi DjangoTagBlock ctermfg=219
@@ -145,3 +145,13 @@ hi sqlKeyword ctermfg=NONE ctermbg=NONE cterm=BOLD
 hi sqlStatement ctermfg=NONE ctermbg=NONE cterm=BOLD
 hi clojureKeyword ctermfg=NONE ctermbg=NONE cterm=BOLD
 hi clojureDefine ctermfg=NONE ctermbg=NONE cterm=BOLD
+
+hi tsxRegion ctermfg=15 ctermbg=NONE cterm=NONE
+hi typescriptBraces ctermfg=15 ctermbg=NONE cterm=NONE
+hi typescriptLineComment ctermfg=15 ctermbg=NONE cterm=NONE
+hi typescriptStringB ctermfg=15 ctermbg=NONE cterm=NONE
+hi typescriptStringS ctermfg=15 ctermbg=NONE cterm=NONE
+hi xmlError ctermfg=15 ctermbg=NONE cterm=NONE
+hi xmlString ctermfg=15 ctermbg=NONE cterm=NONE
+hi xmlTag ctermfg=15 ctermbg=NONE cterm=NONE
+hi xmlTagName ctermfg=15 ctermbg=NONE cterm=NONE

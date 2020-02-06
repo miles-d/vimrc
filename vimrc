@@ -60,6 +60,8 @@ set cryptmethod=blowfish2
 " don't clear screen on suspend
 let g:netrw_altfile = 1
 
+set tags^=./.git/tags
+
 set omnifunc=syntaxcomplete#Complete
 let g:omni_sql_no_default_maps = 1
 set wildignore+=tags,.*.un~,*.pyc
@@ -138,7 +140,7 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 
 " Open last
-nmap <leader>l <c-^>
+nnoremap <leader>l <c-^>
 " Open files in directory of current file
 cnoremap <expr> %% expand('%:h').'/'
 nmap <leader>e :edit %%
@@ -269,7 +271,7 @@ inoremap sh<c-i> #!/usr/bin/env<space>
 augroup COMMON_PROGRAMMING
     autocmd!
     autocmd FileType coffee,javascript,python,vimwiki,css,ruby setlocal shiftwidth=2 tabstop=2
-    autocmd FileType python,php,javascript,java,ruby,c iabbrev <buffer> ret return
+    autocmd FileType python,php,javascript,java,ruby,c,typescript iabbrev <buffer> ret return
     autocmd FileType php,java iabbrev <buffer> pv private
     autocmd FileType php,java iabbrev <buffer> pub public
     autocmd FileType php,java iabbrev <buffer> pum public function
@@ -402,17 +404,24 @@ function! JsBindInConstructor()
   normal! j==^
 endfunction
 
+let g:tsuquyomi_completion_detail = 0
+
 augroup JAVASCRIPT
     autocmd!
-    autocmd FileType javascript imap <buffer> gj this.
-    autocmd FileType javascript imap <buffer> tj const 
-    autocmd FileType javascript nnoremap <buffer> <leader>jb :call JsBind()<cr>
-    autocmd FileType javascript nnoremap <buffer> <leader>jib :call JsBindInConstructor()<cr>
+    autocmd FileType vue setlocal commentstring=//\ %s
+    autocmd FileType vue,typescript,typescript.tsx set hidden
+    autocmd FileType javascript,typescript imap <buffer> gj this.
+    autocmd FileType javascript,typescript,vue imap <buffer> tj const 
+    autocmd FileType javascript,typescript nnoremap <buffer> <leader>jb :call JsBind()<cr>
+    autocmd FileType javascript,typescript nnoremap <buffer> <leader>jib :call JsBindInConstructor()<cr>
     " h - console.log
-    autocmd FileType javascript imap <buffer> h<c-i> console.log(X)<esc>FXs
+    autocmd FileType javascript,typescript imap <buffer> h<c-i> console.log(X)<esc>FXs
+    autocmd FileType typescript,vue,typescript.tsx imap <buffer> h<c-i> console.log(X); // eslint-disable-line<esc>FXs
     " fl - console.log current file
-    autocmd FileType javascript imap <buffer> fl<c-i> console.log('<c-r>=expand("%:t")<cr>')<esc>
+    autocmd FileType javascript,typescript imap <buffer> fl<c-i> console.log('<c-r>=expand("%:t")<cr>')<esc>
     autocmd FileType javascript nnoremap ,cc "zyiwoconsole.log('<c-r>z', <c-r>z)<esc>
+    autocmd FileType typescript,vue nnoremap ,cc "zyiwoconsole.log('<c-r>z', <c-r>z); // eslint-disable-line<esc>
+    autocmd FileType typescript setlocal errorformat=%.%#FAIL\ %m
 augroup END
 
 augroup VIMSCRIPT
@@ -452,7 +461,8 @@ augroup END
 " SELECTA
 nnoremap <localleader>nm :call SelectaGitFile("Model", "")<cr>
 " nnoremap <localleader>nc :call SelectaGitFile("Controller", "")<cr>
-nnoremap <localleader>nt :call SelectaGitFile("[Tt]est", "")<cr>
+" nnoremap <localleader>nt :call SelectaGitFile("[Tt]est", "")<cr>
+nnoremap <localleader>nt :call SelectaCommand("git ls-files \| grep '\\(spec\\\|test\\)\\b'", "", ":e")<cr>
 nnoremap <localleader>nj :call SelectaGitFile("\.js$", "test\/unit")<cr>
 " nnoremap <localleader>ns :call SelectaGitFile(".*\.css", "")<cr>
 nnoremap <localleader>np :call SelectaGitFile(".*\.php", "")<cr>
@@ -485,11 +495,29 @@ function! SwitchProject()
 endfunction
 nnoremap <localleader>p :call SwitchProject()<cr>
 
-let g:ale_enabled = 0
 nnoremap coa :ALEToggle<cr>
+let g:ale_enabled = 0
+let g:ale_fix_on_save = 0
+
+" \   'typescript': ['eslint', 'tsserver'],
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'typescript': ['eslint'],
+\   'vue': ['eslint'],
 \}
+let g:ale_fixers = {
+\   'typescript': ['prettier'],
+\   'typescript.tsx': ['prettier'],
+\   'javascript': ['prettier'],
+\   'vue': ['prettier'],
+\   'css': ['prettier'],
+\}
+augroup ALEProgress
+  autocmd!
+  " autocmd User ALELintPre  hi Statusline ctermfg=red
+  " autocmd User ALELintPost hi Statusline ctermfg=blue
+augroup END
+
 
 nnoremap <leader>hg :call GreyBackground()<CR>
 nmap coe :call SwitchColor()<cr>
@@ -536,3 +564,13 @@ function! EditCurrentColorScheme()
 endfunction
 
 command! Ecolor :call EditCurrentColorScheme()
+
+function! DeleteHiddenBuffers()
+    let tpbl=[]
+    call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+    for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
+        silent execute 'bwipeout' buf
+    endfor
+endfunction
+
+command! DelBuffers :call DeleteHiddenBuffers()
