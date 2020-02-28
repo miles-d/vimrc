@@ -524,7 +524,8 @@ nmap coe :call SwitchColor()<cr>
 set background=dark
 
 if get(g:, 'colors_name') == 0
-  colorscheme minidark
+  " colorscheme minidark
+  colorscheme green
 else
   colorscheme minilight
 endif

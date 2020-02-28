@@ -66,7 +66,7 @@ hi LineNr ctermfg=15 cterm=BOLD
 hi Visual ctermfg=NONE ctermbg=236 cterm=NONE
 
 hi Error ctermfg=NONE ctermbg=red cterm=NONE
-hi ErrorMsg ctermfg=NONE ctermbg=red cterm=NONE
+hi ErrorMsg ctermfg=NONE ctermbg=NONE cterm=NONE
 hi WarningMsg ctermfg=NONE ctermbg=red cterm=NONE
 hi SpellBad ctermfg=208 ctermbg=NONE cterm=NONE
 
@@ -148,10 +148,13 @@ hi clojureDefine ctermfg=NONE ctermbg=NONE cterm=BOLD
 
 hi tsxRegion ctermfg=15 ctermbg=NONE cterm=NONE
 hi typescriptBraces ctermfg=15 ctermbg=NONE cterm=NONE
-hi typescriptLineComment ctermfg=15 ctermbg=NONE cterm=NONE
+hi! link typescriptLineComment Comment
 hi typescriptStringB ctermfg=15 ctermbg=NONE cterm=NONE
 hi typescriptStringS ctermfg=15 ctermbg=NONE cterm=NONE
+hi typescriptStringD ctermfg=15 ctermbg=NONE cterm=NONE
 hi xmlError ctermfg=15 ctermbg=NONE cterm=NONE
 hi xmlString ctermfg=15 ctermbg=NONE cterm=NONE
 hi xmlTag ctermfg=15 ctermbg=NONE cterm=NONE
 hi xmlTagName ctermfg=15 ctermbg=NONE cterm=NONE
+hi tmuxOptions ctermfg=15 ctermbg=NONE cterm=BOLD
+hi tmuxString ctermfg=15 ctermbg=NONE cterm=NONE
